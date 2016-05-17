@@ -174,7 +174,7 @@ function solveChallenge(response, body, options, callback) {
 
   // Make request with answer
   makeRequest(options, function(error, response, body) {
-    if(response.statusCode === 302) { //occurrs when posting. request is supposed to auto-follow these
+    if(response && response.statusCode && response.statusCode === 302) { //occurrs when posting. request is supposed to auto-follow these
                                       //by default, but for some reason it's not
       options.url = response.headers.location;
       delete options.qs;
